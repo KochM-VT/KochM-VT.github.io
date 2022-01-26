@@ -1,0 +1,84 @@
+/* Michael Koch
+ * CS 3744
+ * Project 2: Stylish Resume
+ */
+
+ :root {
+     font-size: 100%;
+     --banner-size: 12em;
+ }
+
+ html {
+     box-sizing: border-box;
+ }
+
+h1 {
+    text-decoration: underline;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+.job-title {
+    font-weight: bold;
+}
+
+.job-location {
+    font-style: italic;
+}
+
+.banner {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    background-color: beige;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    min-height: var(--banner-size);
+}
+
+#headshot {
+    width: auto;
+    height: auto;
+    max-width: 95%;
+    max-height: 95%;
+
+}
+
+#contact-main {
+    float: left;
+    width: 25%;
+}
+
+.contact-section {
+    float: left;
+    width: 15%;
+}
+
+.skill-section {
+    float: left;
+    width: 50%;
+}
+
+.resume-section:target {
+    scroll-margin-top: var(--banner-size);
+}
+
+#main-resume > .resume-section:target ~ .resume-section:last-child, #main-resume > .resume-section {
+    padding-top: var(--banner-size);
+    display: none;
+}
+
+#main-resume > .resume-section:last-child, #main-resume > .resume-section:target {
+    display: block;
+}
+
+.resume-section::after {
+    content: "\a";
+    white-space: pre;
+}
