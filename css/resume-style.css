@@ -3,32 +3,87 @@
  * Project 2: Stylish Resume
  */
 
- :root {
+ /* Globals for the entire page.
+  * Note the use of word wrap to account for very small screens.
+  */
+:root {
      font-size: 100%;
      --banner-size: 12em;
-     font-family: Helvetica, sans-serif;
- }
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     word-wrap: break-word;
+     background-color: #e0e0e0;
+     overflow: scroll;
+}
 
- html {
+/* Set border box */
+html {
      box-sizing: border-box;
- }
+}
 
+/* Header 1 should be helvetica */
 h1 {
-    text-decoration: underline;
+    font-family: Helvetica, sans-serif;
 }
 
+/* Header 2 should be underlined and helvetica */
 h2 {
+    font-family: Helvetica, sans-serif;
     text-decoration: underline;
 }
 
+/* Header 3 should be helvetica */
+h3 {
+    font-family: Helvetica, sans-serif;
+}
+
+/* Page navigation bar: 
+ *  Centered on the header
+ *  Somewhat transparent
+ *  Solid white border (for clarity)
+ */
+#page-nav {
+    margin:auto;
+    width: 50%;
+    background-color: rgba(70, 70, 70, 0.5);
+    border: 1px solid #e7e7e7;
+}
+
+/* Page navigation elements:
+ *  No text decoration (override underline)
+ *  Solid white color
+ *  Highlight on hover
+ *  Light padding on left and right
+ *  Centered text
+ */
+#page-nav a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+#page-nav a:hover {
+    background-color: rgba(112, 112, 112, 0.5);
+}
+
+/* Job title should be bold, location/dates italic */
 .job-title {
     font-weight: bold;
 }
-
 .job-location {
     font-style: italic;
 }
 
+/* Fixed banner 
+ *  Display flex
+ *  Centered content and alignment
+ *  Fixed to top of the page
+ *  Bg color very dark blue (favorite color)
+ *  White text
+ *  Spans whole page
+ *  Min height defined at top, auto height otherwise
+ *  Solid bottom border
+ */
 .banner {
     position: fixed;
     display: flex;
@@ -42,52 +97,73 @@ h2 {
     height: auto;
     text-align: center;
     min-height: var(--banner-size);
+    border-bottom: 0.25em solid white;
 }
 
-.banner-link:link {
-    color:powderblue;
-}
-
-.banner-link:visited {
-    color:#966fd6;
-}
-
+/* Headshot should scale 
+ *  Max height and width at 40%
+ *  Circular border for circular image
+ */
 #headshot {
     width: auto;
     height: auto;
-    max-width: 95%;
-    max-height: 95%;
-
+    max-width: 40%;
+    max-height: 40%;
+    border-radius: 50%;
 }
 
+/* Main contact info
+ *  Float to left
+ *  Small amount of padding
+ *  Center content and text
+ *  Width at 47% (allows for padding)
+ */
 #contact-main {
     float: left;
-    width: 25%;
+    padding: 1%;
+    left: 33%;
+    top: 33%;
+    justify-content: center;
+    text-align: center;
+    width: 47%;
 }
 
+/* Other contact sections
+ *  Float to the left
+ *  Small amount of padding
+ *  Width at 23.5% to allow for padding
+ *  Center text
+ */
 .contact-section {
     float: left;
-    width: 15%;
+    padding: 1%;
+    width: 23.5%;
+    text-align: center;
 }
 
+/* Tile skills side by side */
 .skill-section {
     float: left;
     width: 50%;
 }
 
+/* Scroll margins for each resume section */
 .resume-section:target {
     scroll-margin-top: var(--banner-size);
 }
 
+/* Pad resume sections with banner size, and hide when not in use*/
 #main-resume > .resume-section:target ~ .resume-section:last-child, #main-resume > .resume-section {
     padding-top: var(--banner-size);
     display: none;
 }
 
+/* Redisplay sections when in use */
 #main-resume > .resume-section:last-child, #main-resume > .resume-section:target {
     display: block;
 }
 
+/* Line breaks after sections */
 .resume-section::after {
     content: "\a";
     white-space: pre;
